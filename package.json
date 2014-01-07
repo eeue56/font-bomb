@@ -1,6 +1,6 @@
 {
   "name": "fontbomb",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Serve Google Web Fonts Yourself",
   "main": "fontBomb.js",
   "dependencies": {
