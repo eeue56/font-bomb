@@ -4,7 +4,7 @@
 3 info using node@v0.10.24
 4 verbose node symlink /usr/bin/node
 5 error Error: Git working directory not clean.
-5 error M fontBomb.js
+5 error D npm-debug.log
 5 error M package.json
 5 error     at /usr/lib/node_modules/npm/lib/version.js:98:35
 5 error     at ChildProcess.exithandler (child_process.js:635:7)

@@ -21,6 +21,9 @@
     "webfont",
     "woff"
   ],
+  "bin": {
+    "fontbomb": "fontBomb.js"
+  },
   "author": "Dan Prince",
   "license": "ISC",
   "bugs": {
