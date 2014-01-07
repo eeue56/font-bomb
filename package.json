@@ -1,5 +1,5 @@
 {
-  "name": "font-bomb",
+  "name": "fontbomb",
   "version": "0.0.1",
   "description": "Serve Google Web Fonts Yourself",
   "main": "fontBomb.js",

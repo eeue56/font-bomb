@@ -11,6 +11,8 @@ function main() {
   // get our input 
   input = process.argv[2];
   
+  if(!input) throw new Error('fontbomb expects one argument');  
+  
   // extract url
   url = input.match(/(http:\/\/.*?)['\s]/);
   
