@@ -61,7 +61,8 @@ function parseCSS(css) {
     name = match[1];
     url = match[2];
     woffPath = makeWoffPath(name);
-    css = css.replace(url, woffPath);
+    // woff path must be relative to css
+    css = css.replace(url, '../' + woffPath);
     saveWoff(url, woffPath);
   }
   
