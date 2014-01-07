@@ -1,0 +1,30 @@
+{
+  "name": "font-bomb",
+  "version": "0.0.0",
+  "description": "Serve Google Web Fonts Yourself",
+  "main": "fontBomb.js",
+  "dependencies": {
+    "mkdirp": "~0.3.5",
+    "request": "~2.30.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/code-curve/baptist.git"
+  },
+  "keywords": [
+    "font",
+    "google",
+    "webfont",
+    "woff"
+  ],
+  "author": "Dan Prince",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code-curve/baptist/issues"
+  },
+  "homepage": "https://github.com/code-curve/baptist"
+}
