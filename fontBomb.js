@@ -7,8 +7,6 @@ var request = require('request')
   , mv = require('mv');
 
 var fonts = 'fonts';
-var makeWoffPath = makePath('fonts', 'woff');
-var makeCSSPath = makePath('css', 'css');
 
 function main() {
   var input, url;
@@ -28,15 +26,6 @@ function main() {
   }
 }
 
-function makePath(folder, extension) {
-  // just in case it doesn't exist
-  mkdirp(folder);
-  
-  return function(file) {
-    return folder + '/' + file + '.' + extension;
-  }
-}
-
 function getCSS(url) {
   var matches;
   console.log('Getting CSS...');
@@ -46,10 +35,9 @@ function getCSS(url) {
     var css, cssPath;
 
     css = parseCSS(body);
-    cssPath = makeCSSPath('fonts');
 
-    console.log('Adding new css file at', cssPath);
-    fs.writeFile(cssPath, css);
+    console.log('Adding new css file');
+    fs.writeFile('css/fonts.css', css);
   });
 }
 
@@ -62,20 +50,13 @@ function parseCSS(css) {
   while(match = re.exec(css)) {
     url = match[1];
     name = url.match(/\/(\w*\.ttf)$/)[1];
-    woffPath = makeWoffPath(name);
     
     // woff path must be relative to css
-    css = css.replace(url, '../' + woffPath);
-    saveWoff(url, woffPath);
+    css = css.replace(url, '../fonts/' + name);
+    download(url, 'fonts')
   }
   
   return css;
-}
-
-function saveWoff(url, destination) {
-  console.log('Get Woff from', url);
-  download(url, fonts);
-  console.log('Adding new woff file at', destination);
 }
 
 main();
