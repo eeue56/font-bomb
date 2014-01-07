@@ -5,7 +5,9 @@
   "main": "fontBomb.js",
   "dependencies": {
     "mkdirp": "~0.3.5",
-    "request": "~2.30.0"
+    "request": "~2.30.0",
+    "download": "~0.1.7",
+    "mv": "~1.0.0"
   },
   "devDependencies": {},
   "scripts": {

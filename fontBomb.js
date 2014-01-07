@@ -2,7 +2,9 @@
 
 var request = require('request')
   , fs = require('fs')
-  , mkdirp = require('mkdirp');
+  , download = require('download')
+  , mkdirp = require('mkdirp')
+  , mv = require('mv');
 
 var fonts = 'fonts';
 var makeWoffPath = makePath('fonts', 'woff');
@@ -56,11 +58,12 @@ function parseCSS(css) {
   console.log('Parsing CSS...'); 
 
   // capture the name of the font and its URL  
-  re = /src: local.* local\('(.*?)'\).*url\((.*?)\)/g;
+  re = /src:.*url\((.*?)\)/g;
   while(match = re.exec(css)) {
-    name = match[1];
-    url = match[2];
+    url = match[1];
+    name = url.match(/\/(\w*\.ttf)$/)[1];
     woffPath = makeWoffPath(name);
+    
     // woff path must be relative to css
     css = css.replace(url, '../' + woffPath);
     saveWoff(url, woffPath);
@@ -71,11 +74,8 @@ function parseCSS(css) {
 
 function saveWoff(url, destination) {
   console.log('Get Woff from', url);
-  request(url, function(err, res, body) {
-    if(err) throw err;
-    console.log('Adding new woff file at', destination);
-    fs.writeFile(destination, body);
-  });
+  download(url, fonts);
+  console.log('Adding new woff file at', destination);
 }
 
 main();
