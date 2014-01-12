@@ -42,18 +42,19 @@ function getCSS(url) {
 }
 
 function parseCSS(css) {
-  var re, match, url, name, woffPath;
+  var re, match, url, name;
   console.log('Parsing CSS...'); 
 
   // capture the name of the font and its URL  
   re = /src:.*url\((.*?)\)/g;
+  
   while(match = re.exec(css)) {
     url = match[1];
     name = url.match(/\/(\w*\.ttf)$/)[1];
     
     // woff path must be relative to css
     css = css.replace(url, '../fonts/' + name);
-    download(url, 'fonts')
+    download(url, 'fonts');
   }
   
   return css;
